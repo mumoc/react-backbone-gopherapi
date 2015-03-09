@@ -4,8 +4,5 @@
 #= require 'react/react'
 #= require 'backbone-react-component/lib/component'
 
-#= require 'app_scope'
+#= require 'gopher_api'
 
-#= require_tree './models'
-#= require_tree './collections'
-#= require_tree './components'

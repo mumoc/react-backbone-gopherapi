@@ -1,18 +1,11 @@
 {
-  "name": "middleman backbone react template",
+  "name": "Backbone + React + GopherApi(spree)",
   "version": "0.0.0",
-  "homepage": "https://github.com/jbhatab/middleman-backbone-react-template",
+  "homepage": "https://github.com/mumoc/react-backbone-gopherapi",
   "authors": [
-    "jbhatab <jbhatab@gmail.com>"
+    "mumoc <mumo.crls@gmail.com>"
   ],
-  "description": "Template for backbone and react using middleman.",
-  "keywords": [
-    "middleman",
-    "backbone",
-    "react"
-  ],
-  "license": "MIT",
-  "private": true,
+  "description": "Playground for Backbone-React-GopherApi",
   "dependencies": {
     "underscore": "~1.7.0",
     "backbone": "~1.1.2",
