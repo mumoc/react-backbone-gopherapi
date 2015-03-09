@@ -1,8 +1,9 @@
 var Taxon = React.createClass({
   render: function() {
     return (
-      React.DOM.a({ className: 'list-group-item', href: '/t/' + this.props.permalink }, this.props.taxon.name)
-    )
+      React.DOM.a(
+        { className: 'list-group-item', href: '/t/' + this.props.taxon.permalink },
+        this.props.taxon.name))
   }
 });
 
@@ -15,7 +16,9 @@ var TaxonTree = React.createClass({
     });
 
     return (
-      React.DOM.div({ className: 'list-group' }, taxons)
+      React.DOM.div(
+        { className: 'list-group' },
+        taxons)
     )
   }
 });

@@ -60,7 +60,6 @@ var Paginator = React.createClass({
 
   componentDidMount: function() {
     var pages = this.getPages();
-    console.log(this.getPages());
     var _this_ = this;
     pages.forEach(function(page) {
       _this_.pages.push(React.createElement(Page, { page: page }))

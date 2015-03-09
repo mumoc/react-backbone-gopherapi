@@ -2,7 +2,7 @@
   javascript:
     var taxonomiesUrl = 'http://localhost:5000/api/taxonomies?token=d89ffcec5c8adfc0992c58968f5efa14bab1ee5d3c3f625e';
     var reactTaxonomy = React.createElement(TaxonomiesSection, { url: taxonomiesUrl });
-    React.render(reactTaxonomy, document.getElementById('taxonomies-list'))
+    React.render(reactTaxonomy, document.getElementsByClassName('sidebar')[0]);
 
     var productsUrl = 'http://localhost:5000/api/products?token=d89ffcec5c8adfc0992c58968f5efa14bab1ee5d3c3f625e';
     var reactProduct = React.createElement(ProductsSection, { url: productsUrl });

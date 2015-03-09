@@ -52,7 +52,9 @@ var TaxonomiesSection = React.createClass({
 
   render: function() {
     return (
-      React.createElement(TaxonomiesList, { taxonomies: this.state.taxonomies })
+      React.DOM.div({ id: 'taxonomies-list' },
+        React.createElement(TaxonomiesList, { taxonomies: this.state.taxonomies })
+      )
     )
   }
 });

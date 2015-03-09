@@ -68,8 +68,8 @@ var ProductsSection = React.createClass({
   render: function() {
     return (
       React.DOM.div({ "data-hook": 'homepage_products' },
-        React.createElement(ProductsList, { products: this.state.products })
-        //React.createElement(Paginator, { pagination: this.state.pagination })
+        React.createElement(ProductsList, { products: this.state.products }),
+        React.createElement(Paginator, { pagination: this.state.pagination })
       )
     )
   }
