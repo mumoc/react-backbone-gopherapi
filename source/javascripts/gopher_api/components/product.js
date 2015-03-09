@@ -24,11 +24,13 @@ var ProductListItem = React.createClass({
 });
 
 var ProductsList = React.createClass({
+  mixins: [Backbone.React.Component.mixin],
+
   render: function() {
     var products = [];
 
-    this.props.products.forEach(function(product){
-      products.push(React.createElement(ProductListItem, { product: product, key: product.id }))
+    this.getCollection().forEach(function(product){
+      products.push(React.createElement(ProductListItem, { product: product.attributes, key: product.attributes.id }))
     });
 
     return (
@@ -38,39 +40,15 @@ var ProductsList = React.createClass({
 });
 
 var ProductsSection = React.createClass({
-  loadProducts: function() {
-    $.ajax({
-      url: this.props.url,
-      dataType: 'json',
-
-      success: function(response) {
-        products = response.products;
-        delete response.products;
-        this.setState({ products: products, pagination: response });
-      }.bind(this),
-
-      error: function(xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
-  },
-
-  //This method is called once in the divfetime of the class
-  getInitialState: function() {
-    return { products: [], pagination: {} };
-  },
-
-  //This method is called when the component is rendered
-  componentDidMount: function() {
-    this.loadProducts();
-  },
+  mixins: [Backbone.React.Component.mixin],
 
   render: function() {
     return (
-      React.DOM.div({ "data-hook": 'homepage_products' },
-        React.createElement(ProductsList, { products: this.state.products }),
+      React.DOM.div({ 'data-hook': 'homepage_products' },
+        React.createElement(ProductsList),
         React.createElement(Paginator, { pagination: this.state.pagination })
       )
     )
   }
 });
+

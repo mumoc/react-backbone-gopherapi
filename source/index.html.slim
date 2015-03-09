@@ -4,6 +4,13 @@
     var reactTaxonomy = React.createElement(TaxonomiesSection, { url: taxonomiesUrl });
     React.render(reactTaxonomy, document.getElementsByClassName('sidebar')[0]);
 
-    var productsUrl = 'http://localhost:5000/api/products?token=d89ffcec5c8adfc0992c58968f5efa14bab1ee5d3c3f625e';
-    var reactProduct = React.createElement(ProductsSection, { url: productsUrl });
-    React.render(reactProduct, document.getElementById('content'));
+
+    var products = new GopherApi.Collections.Products
+
+    products.fetch({
+      success: function(response) {
+        var reactProduct = React.createElement(ProductsSection, { collection: products });
+        React.render(reactProduct, document.getElementById('content'));
+      }
+    })
+
