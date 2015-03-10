@@ -22,6 +22,8 @@ var Page = React.createClass({
 });
 
 var Paginator = React.createClass({
+  mixins: [Backbone.React.Component.mixin],
+
   pages: [],
 
   defaultPagination: {
@@ -55,7 +57,7 @@ var Paginator = React.createClass({
   },
 
   getInitialState: function() {
-    return { pagination: this.defaultPagination }
+    return { pagination: this.getCollection().pagination }
   },
 
   componentDidMount: function() {

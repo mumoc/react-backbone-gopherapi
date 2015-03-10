@@ -30,7 +30,7 @@ var ProductsList = React.createClass({
     var products = [];
 
     this.getCollection().forEach(function(product){
-      products.push(React.createElement(ProductListItem, { product: product.attributes, key: product.attributes.id }))
+      products.push(React.createElement(ProductListItem, { product: product.attributes }))
     });
 
     return (
@@ -44,9 +44,9 @@ var ProductsSection = React.createClass({
 
   render: function() {
     return (
-      React.DOM.div({ 'data-hook': 'homepage_products' },
+      React.DOM.div({ "data-hook": 'homepage_products' },
         React.createElement(ProductsList),
-        React.createElement(Paginator, { pagination: this.state.pagination })
+        React.createElement(Paginator)
       )
     )
   }

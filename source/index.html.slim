@@ -1,16 +1,20 @@
 = content_for(:javascripts) do
   javascript:
-    var taxonomiesUrl = 'http://localhost:5000/api/taxonomies?token=d89ffcec5c8adfc0992c58968f5efa14bab1ee5d3c3f625e';
-    var reactTaxonomy = React.createElement(TaxonomiesSection, { url: taxonomiesUrl });
-    React.render(reactTaxonomy, document.getElementsByClassName('sidebar')[0]);
-
+    var taxonomies = new GopherApi.Collections.Taxonomies
+    taxonomies.fetch({
+      data: { token: GopherApi.Config.token },
+      success: function(response) {
+        var reactTaxonomy = React.createElement(TaxonomiesSection, { collection: taxonomies });
+        React.render(reactTaxonomy, document.getElementsByClassName('sidebar')[0]);
+      }
+    });
 
     var products = new GopherApi.Collections.Products
-
     products.fetch({
+      data: { token: GopherApi.Config.token },
       success: function(response) {
         var reactProduct = React.createElement(ProductsSection, { collection: products });
         React.render(reactProduct, document.getElementById('content'));
       }
-    })
+    });
 

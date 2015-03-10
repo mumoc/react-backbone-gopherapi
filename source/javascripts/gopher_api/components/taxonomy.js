@@ -13,11 +13,13 @@ var Taxonomy = React.createClass({
 });
 
 var TaxonomiesList = React.createClass({
+  mixins: [Backbone.React.Component.mixin],
+
   render: function() {
     var taxonomies = [];
 
-    this.props.taxonomies.forEach(function(taxonomy) {
-      taxonomies.push(React.createElement(Taxonomy, { taxonomy: taxonomy, key: taxonomy.id }))
+    this.getCollection().forEach(function(taxonomy) {
+      taxonomies.push(React.createElement(Taxonomy, { taxonomy: taxonomy.attributes }))
     });
 
     return (
@@ -27,33 +29,12 @@ var TaxonomiesList = React.createClass({
 });
 
 var TaxonomiesSection = React.createClass({
-  loadTaxons: function() {
-    $.ajax({
-      url: this.props.url,
-      dataType: 'json',
-
-      success: function(response) {
-        this.setState({ taxonomies: response.taxonomies });
-      }.bind(this),
-
-      error: function(xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
-  },
-
-  getInitialState: function() {
-    return { taxonomies: [] };
-  },
-
-  componentDidMount: function() {
-    this.loadTaxons();
-  },
+  mixins: [Backbone.React.Component.mixin],
 
   render: function() {
     return (
       React.DOM.div({ id: 'taxonomies-list' },
-        React.createElement(TaxonomiesList, { taxonomies: this.state.taxonomies })
+        React.createElement(TaxonomiesList)
       )
     )
   }
