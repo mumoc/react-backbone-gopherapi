@@ -1,3 +1,0 @@
-=== Backbone + React + GopherApi(Spree)
-
-TODO(mumoc): Write a clear readme. Due-date: 03-10-2015
